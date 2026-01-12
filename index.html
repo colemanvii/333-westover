@@ -3,336 +3,81 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>333 Westover // Command Center</title>
+  <title>333 Westover</title>
+  <meta name="description" content="A Southern listening post for art, attention, and aligned living." />
   <style>
-    :root {
-      --bg: #0b0f0d;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.04);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --hairline: rgba(255,255,255,.14);
-      --accent: #71ffb0;
-      --accent2: #ffb86b;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --radius: 22px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    :root{
+      --bg:#0b0f0d; --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.62);
+      --line:rgba(255,255,255,.14); --accent:#71ffb0;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: radial-gradient(1200px 600px at 18% 10%, rgba(113,255,176,.18), transparent 55%),
-                  radial-gradient(900px 500px at 80% 30%, rgba(255,184,107,.16), transparent 60%),
-                  linear-gradient(180deg, #070b09, var(--bg));
-      color: var(--text);
-      font-family: var(--sans);
-      line-height: 1.45;
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text); font-family:var(--sans); line-height:1.35;
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(113,255,176,.12), transparent 60%),
+        linear-gradient(180deg,#070b09,var(--bg));
     }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 18px 90px; }
-    header {
-      padding: 18px 6px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .kicker {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: .18em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(32px, 5vw, 54px);
-      letter-spacing: -0.02em;
-    }
-    .sub {
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 72ch;
-    }
-    .badgeRow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-    .badge {
-      border: 1px solid var(--hairline);
-      background: rgba(0,0,0,.18);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(255,255,255,.82);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .card {
-      grid-column: span 12;
-      border: 1px solid var(--hairline);
-      background: linear-gradient(180deg, var(--panel), var(--panel2));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px 18px 16px;
-      position: relative;
-      overflow: hidden;
-    }
-    .card:before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: radial-gradient(600px 160px at 10% 0%, rgba(113,255,176,.12), transparent 60%),
-                  radial-gradient(520px 180px at 90% 10%, rgba(255,184,107,.10), transparent 62%);
-      pointer-events: none;
-    }
-    .card > * { position: relative; }
-    .titleRow { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-    .h2 {
-      margin: 0 0 10px 0;
-      font-size: 16px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.80);
-      font-family: var(--mono);
-    }
-    .small { color: var(--muted); font-size: 13px; }
-    .pill {
-      font-family: var(--mono);
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--hairline);
-      background: rgba(0,0,0,.20);
-      color: rgba(255,255,255,.84);
-    }
-    .pill b { color: var(--accent); font-weight: 600; }
-    ul {
-      margin: 10px 0 0 18px;
-      color: rgba(255,255,255,.84);
-    }
-    li { margin: 6px 0; }
-    .split {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 860px) {
-      .card.col6 { grid-column: span 6; }
-      .card.col7 { grid-column: span 7; }
-      .card.col5 { grid-column: span 5; }
-      .split { grid-template-columns: 1fr 1fr; }
-    }
-    .quote {
-      border-left: 2px solid rgba(113,255,176,.7);
-      padding-left: 12px;
-      margin: 10px 0 0 0;
-      color: rgba(255,255,255,.86);
-      font-size: 14px;
-    }
-    .callout {
-      border: 1px dashed rgba(255,255,255,.22);
-      border-radius: 16px;
-      padding: 14px 14px 12px;
-      margin-top: 10px;
-      background: rgba(0,0,0,.20);
-    }
-    .callout .small { margin-top: 6px; }
-    .mono { font-family: var(--mono); }
-    .action {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .check {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-    }
-    .dot {
-      width: 9px; height: 9px; border-radius: 999px;
-      margin-top: 6px;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(113,255,176,.12);
-      flex: 0 0 auto;
-    }
-    .dot.orange { background: var(--accent2); box-shadow: 0 0 0 4px rgba(255,184,107,.12); }
-    footer {
-      margin-top: 22px;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
-      font-family: var(--mono);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .btnRow { display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
-    button {
-      appearance: none;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.22);
-      color: rgba(255,255,255,.88);
-      padding: 10px 12px;
-      border-radius: 14px;
-      font-family: var(--mono);
-      font-size: 12px;
-      cursor: pointer;
-    }
-    button:hover { border-color: rgba(113,255,176,.55); }
-    .hidden { display: none; }
-    textarea {
-      width: 100%;
-      min-height: 130px;
-      border-radius: 16px;
-      padding: 12px 12px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.22);
-      color: rgba(255,255,255,.88);
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.4;
-      resize: vertical;
-    }
+    .wrap{max-width:880px; margin:0 auto; padding:56px 18px 72px;}
+    .k{font:12px var(--mono); letter-spacing:.18em; text-transform:uppercase; color:var(--muted);}
+    h1{margin:10px 0 6px; font-size:52px; letter-spacing:-.02em;}
+    .sub{color:var(--muted); max-width:60ch; font-size:15px;}
+    .rule{height:1px; background:var(--line); margin:22px 0;}
+    .grid{display:grid; gap:14px;}
+    .row{display:flex; justify-content:space-between; gap:18px; border:1px solid var(--line);
+      border-radius:16px; padding:14px 14px; background:rgba(0,0,0,.18);}
+    .label{font:12px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted);}
+    .value{font-size:14px;}
+    ul{margin:8px 0 0 18px; padding:0; color:rgba(255,255,255,.85);}
+    li{margin:6px 0;}
+    .status{font:12px var(--mono); letter-spacing:.14em; text-transform:uppercase;}
+    .dot{display:inline-block; width:8px; height:8px; border-radius:99px; background:var(--accent); margin-right:8px;}
+    footer{margin-top:28px; color:rgba(255,255,255,.48); font:12px var(--mono); letter-spacing:.14em; text-transform:uppercase;}
+    @media (max-width:640px){ h1{font-size:40px;} .row{flex-direction:column;} }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="kicker">Monk Mode • Command Center</div>
-      <h1>333 Westover</h1>
-      <div class="sub">Clarksville, Mississippi — Haven Physical Node. A Southern listening post for art, attention, and aligned living.</div>
-      <div class="badgeRow">
-        <div class="badge">Signal &gt; Spectacle</div>
-        <div class="badge">Small &gt; Scalable</div>
-        <div class="badge">Presence &gt; Performance</div>
-        <div class="badge">Long View Always</div>
-      </div>
-    </header>
+  <main class="wrap">
+    <div class="k">Monk Mode • Command Center</div>
+    <h1>333 Westover</h1>
+    <div class="sub">A Southern listening post for art, attention, and aligned living.</div>
+
+    <div class="rule"></div>
 
     <section class="grid">
-      <div class="card col7">
-        <div class="titleRow">
-          <div class="h2">Mission</div>
-          <div class="pill"><b>STATUS</b> • Acquisition: In Motion</div>
+      <div class="row">
+        <div>
+          <div class="label">Location</div>
+          <div class="value">Clarksville, Mississippi</div>
         </div>
-        <div class="quote">“This is not about buying a house. This is about giving your life a place to stand.”</div>
-        <div class="callout">
-          <div class="mono">North Star</div>
-          <div class="small">Own it in a way that feels calm in the body for 30 years.</div>
-        </div>
-      </div>
-
-      <div class="card col5">
-        <div class="h2">The Triad</div>
-        <ul>
-          <li><b>The Place</b> — 333 Westover, Clarksville, MS (low noise, high signal)</li>
-          <li><b>The People</b> — Founding Fellows: Jack Butcher, Keith Fulton</li>
-          <li><b>The Steward</b> — Cole (primary steward / managing member)</li>
-        </ul>
-      </div>
-
-      <div class="card col6">
-        <div class="h2">How It Connects</div>
-        <ul>
-          <li><b>Haven</b> → philosophy + alignment</li>
-          <li><b>333 Westover</b> → embodiment + gravity</li>
-          <li><b>The 45</b> → conversations hosted from here</li>
-          <li><b>Tangerine</b> → stories born here</li>
-          <li><b>Cole Calfee</b> → art made here</li>
-        </ul>
-      </div>
-
-      <div class="card col6">
-        <div class="h2">Next Clear Action</div>
-        <div class="action">
-          <div class="check"><span class="dot"></span><div><b>This Week</b><div class="small">Send Jack message • Send Keith message</div></div></div>
-          <div class="check"><span class="dot orange"></span><div><b>Next 30 Days</b><div class="small">Confirm owner/asking/path • Decide holding structure • Move once, cleanly</div></div></div>
+        <div>
+          <div class="label">Status</div>
+          <div class="value status"><span class="dot"></span>In Motion</div>
         </div>
       </div>
 
-      <div class="card col7">
-        <div class="h2">Jack Call Agenda (20–30 min)</div>
-        <div class="split">
-          <div>
-            <ul>
-              <li><b>Open</b> — “Structure, not hype.”</li>
-              <li><b>Place</b> — why Westover, long horizon</li>
-              <li><b>System</b> — Haven ↔ physical anchor</li>
-              <li><b>Ask</b> — founder-safe acquisition + ownership thinking</li>
-              <li><b>Invitation</b> — Founding Haven Fellow (no duties)</li>
-              <li><b>Close</b> — “See what lights up.”</li>
-            </ul>
-          </div>
-          <div class="callout">
-            <div class="mono">Three rails</div>
-            <div class="small">Advice-only • Stewardship • Minority participation (vested, non-controlling)</div>
-            <div class="small" style="margin-top:8px;">No syndicate vibes. No forced pace. No dilution pressure.</div>
-          </div>
+      <div class="row">
+        <div>
+          <div class="label">This Week</div>
+          <ul>
+            <li>Confirm owner / listing facts</li>
+            <li>Choose acquisition path (buy vs option)</li>
+            <li>One decisive move</li>
+          </ul>
         </div>
-      </div>
-
-      <div class="card col5">
-        <div class="h2">Public Share (Quiet)</div>
-        <textarea id="share" readonly>I’m in the process of acquiring a small house in Clarksville, Mississippi.
-
-Not as an investment.
-Not as a retreat center.
-Not as content.
-
-As a place.
-
-A listening post for art, conversation, and long-view living.
-A place to make work slowly and stay human in public.
-
-A few friends will help steward it.
-Most people will never hear about it.
-That’s the point.
-
-Some things only work when they’re small enough to be true.
-
-— Cole</textarea>
-        <div class="btnRow">
-          <button onclick="copyShare()">Copy text</button>
-          <button onclick="toggleMode()">Toggle Monk / Go</button>
+        <div>
+          <div class="label">This Month</div>
+          <ul>
+            <li>Secure the property</li>
+            <li>Lock founder-safe structure</li>
+            <li>Set first arrival date</li>
+          </ul>
         </div>
-        <div class="small" id="copyNote" style="margin-top:8px;"></div>
-      </div>
-
-      <div class="card">
-        <div class="h2">Operating Principles</div>
-        <ul>
-          <li>Quiet authority</li>
-          <li>Human-scale living</li>
-          <li>Ownership that feels calm in the body</li>
-          <li>No forced pace • no dilution pressure</li>
-          <li>Presence &gt; performance</li>
-        </ul>
-        <footer>333 Westover • Haven Physical Node • Monk Mode</footer>
       </div>
     </section>
-  </div>
 
-  <script>
-    function copyShare() {
-      const t = document.getElementById('share');
-      t.select();
-      t.setSelectionRange(0, 99999);
-      navigator.clipboard.writeText(t.value);
-      document.getElementById('copyNote').textContent = "Copied.";
-      setTimeout(() => document.getElementById('copyNote').textContent = "", 1200);
-    }
-
-    let monk = true;
-    function toggleMode() {
-      monk = !monk;
-      document.documentElement.style.setProperty('--accent', monk ? '#71ffb0' : '#9ad1ff');
-      document.documentElement.style.setProperty('--accent2', monk ? '#ffb86b' : '#ffd36b');
-      document.querySelector('.kicker').textContent = monk ? "Monk Mode • Command Center" : "Go Mode • Command Center";
-    }
-  </script>
+    <footer>333 Westover • Signal over noise</footer>
+  </main>
 </body>
 </html>
