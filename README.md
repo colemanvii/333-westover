@@ -1,11 +1,13 @@
 # 333 Westover
 
-A Southern listening post.
+Clarksdale, Mississippi.
 
-**Status:** In Motion  
-**Target:** Secure by end of month
+A place for art, attention, and rest.
 
-## This Week
-- Confirm owner / listing facts
-- Choose acquisition path (buy vs option)
-- Make one decisive move
+—
+
+Westover is being shaped deliberately.
+
+Quiet architecture.  
+Measured space.  
+No excess.
